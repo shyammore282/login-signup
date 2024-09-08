@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+.input {
+  padding: 0.5rem;
+}
+.input input {
+  width: 20rem;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  margin: 0 0 0 0.5rem;
+}
+.button {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

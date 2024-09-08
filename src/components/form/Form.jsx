@@ -5,9 +5,11 @@ import "./style.css";
 
 const Form = () => {
   const [login, setLogin] = useState(false);
+
+  console.log(login);
   return (
     <>
-      <div className="container">{login ? <Login /> : <Signup />}</div>
+      <div className="container">{login ? <Login setLogin={setLogin} /> : <Signup />}</div>
     </>
   );
 };

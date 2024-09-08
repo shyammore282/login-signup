@@ -1,6 +1,7 @@
 import { useState } from "react";
+import "./Style.css";
 
-const Signup = () => {
+const Signup = (setLogin) => {
   const [data, setUserData] = useState({
     name: "",
     email: "",
@@ -12,10 +13,12 @@ const Signup = () => {
     setUserData({ ...data, [name]: value });
   };
 
-  const onSubmit = (e) => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={onSubmit}>
         <div className="input">
           <label htmlFor="name">Name : </label>
@@ -46,7 +49,9 @@ const Signup = () => {
           />
         </div>
 
-        <button type="submit">Submit info</button>
+        <button className="button" type="submit">
+          Submit info
+        </button>
       </form>
     </div>
   );
