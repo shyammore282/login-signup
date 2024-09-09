@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./Style.css";
-
-const Signup = (setLogin) => {
+const Signup = () => {
   const [data, setUserData] = useState({
     name: "",
     email: "",
