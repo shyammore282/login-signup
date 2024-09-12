@@ -1,5 +1,7 @@
 import { useState } from "react";
+import axios from "axios";
 import "./Style.css";
+
 const Signup = () => {
   const [data, setUserData] = useState({
     name: "",
@@ -13,6 +15,23 @@ const Signup = () => {
   };
 
   const onSubmit = (e) => {
+    const userData = { ...data };
+
+    //backend
+    axios
+      .post("http://localhost:5000/signup", userData)
+      .then((result) => {
+        console.log(result.data);
+      })
+      .catch((error) => console.log(error, "please cheak axios"));
+
+    setUserData({
+      name: "",
+      email: "",
+      password: "",
+    });
+
+    console.log(userData);
     e.preventDefault();
   };
 
