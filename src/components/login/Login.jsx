@@ -1,9 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
 import "./Style.css";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
-    userName: "",
+    email: "",
     password: "",
   });
 
@@ -11,18 +12,30 @@ const Login = () => {
     const { name, value } = e.target;
     setLoginData({ ...loginData, [name]: value });
   };
+
+  const onSubmit = (e) => {
+    const loginInfo = { ...loginData };
+
+    // backend end point
+    axios
+      .post("htttp://localhost:5000/login", loginInfo)
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+
+    setLoginData({
+      email: "",
+      password: "",
+    });
+
+    e.preventDefault();
+  };
+
   return (
     <div className="container">
-      <form className="form" action="">
+      <form className="form" action="" onSubmit={onSubmit}>
         <div className="input">
-          <label htmlFor="name">User Name</label>
-          <input
-            type="text"
-            name="userName"
-            value={loginData.userName}
-            placeholder="User Name"
-            onChange={handleOnChange}
-          />
+          <label htmlFor="name">Email </label>
+          <input type="email" name="email" value={loginData.email} placeholder="Email ..." onChange={handleOnChange} />
         </div>
         <div className="input">
           <label htmlFor="name">Password</label>
@@ -34,6 +47,10 @@ const Login = () => {
             onChange={handleOnChange}
           />
         </div>
+
+        <button className="button" type="submit">
+          Submit info
+        </button>
       </form>
     </div>
   );
